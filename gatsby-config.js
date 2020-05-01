@@ -12,7 +12,7 @@ module.exports = {
     author: "test",
     data: ["item1", "item2"],
     person: {name: "peter", age: 30}
-  },
+  }, 
   plugins: ['gatsby-plugin-styled-components',
   'gatsby-transformer-sharp', 'gatsby-plugin-sharp',
   {
@@ -43,11 +43,28 @@ module.exports = {
       baseUrl: `https://dev-gatsby-learning.pantheonsite.io/`,
       apiBase: `restws_resource.json`, // optional, defaults to `restws_resource.json`
       basicAuth: {
-        username: "restws.admin",
+        username: "restws.ramendra",
         password: "tech@12345",
       },
     },
   },
+  /*
+  {
+    resolve: 'gatsby-source-rest-api',
+    options: {
+      endpoints: [
+        'http://dev-gatsby-learning.pantheonsite.io/jsonapi/testresult',
+        'https://jsonplaceholder.typicode.com/posts',
+      ],
+    },
+  },
+  */
+  {
+    resolve: "gatsby-source-custom-api",
+    options: {
+        url: "http://dev-gatsby-learning.pantheonsite.io/jsonapi/testresult"
+    }
+},
 ],
     /*{
       resolve: `gatsby-plugin-typography`,

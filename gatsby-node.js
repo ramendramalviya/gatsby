@@ -10,6 +10,20 @@ query Getproducts {
       }
     }
   }`)
+  const allnodes = await graphql(`
+query get_nodes {
+  allNode {
+    nodes {
+      id
+      data {
+        title
+        url
+        nid
+      }
+    }
+  }
+}
+`)
 //console.log(JSON.stringify(result));
   result.data.products.nodes.forEach((product)=> {
       createPage({
@@ -21,4 +35,18 @@ query Getproducts {
 
       })
   });
+
+
+  //console.log(JSON.stringify(result));
+  allnodes.data.allNode.nodes.forEach((nodesresult)=> {
+    console.log(nodesresult);
+    createPage({
+      path: `/node/${nodesresult.data.nid}`,
+      component:path.resolve(`src/templates/node-template.js`),
+      context: {
+        node_id: nodesresult.data.nid,
+      },
+
+    })
+});
 }
