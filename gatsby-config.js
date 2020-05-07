@@ -62,8 +62,25 @@ module.exports = {
   {
     resolve: "gatsby-source-custom-api",
     options: {
-        url: "http://dev-gatsby-learning.pantheonsite.io/jsonapi/testresult"
-    }
+        url: "http://dev-gatsby-learning.pantheonsite.io/jsonapi/testresult",
+        rootKey: 'gatsbydemoone',
+    },
+    imageKeys: ["field_gatsbyimg"],
+    schemas: {
+      field_gatsbyimg: `String`
+  }
+},
+{
+  resolve: "gatsby-source-custom-api",
+  options: {
+      url: "http://dev-gatsby-learning.pantheonsite.io/jsonapi/testresulttwo",
+      rootKey: 'gatsbydemotwo',
+  },
+  imageKeys: ["field_image_demo"],
+  schemas: {
+    field_image_demo: `String`,
+    
+}
 },
 ],
     /*{
