@@ -1,5 +1,6 @@
 import React from "react"
 import TestDemo from "../components/viewsgatsbydemoone"
+import ViewClone from "../components/viewsgatsbydemoone_clone"
 import Layout from "../components/Layout"
 
 const testdem = () => {
@@ -7,6 +8,7 @@ const testdem = () => {
 
    return(<Layout>
        <TestDemo/>
+       <ViewClone/>
       </Layout>       
       )  
 }

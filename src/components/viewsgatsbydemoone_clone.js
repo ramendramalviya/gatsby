@@ -1,71 +1,46 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import styles from "../components/product.module.css"
+
 
 const getData = graphql`
-query view_clone{
-  viewdemo: allGatsbydemotwo(filter: {nid: {eq: "6"}}) {
+query view_clone {
+  viewdemo_clone: allGatsbydemoone {
     nodes {
+      Nid
+      field_gatsbyimg {
+        uri
+        width
+        height
+      }
       title
-      nid
-      Body
-      field_email_field
-      field_entity_ref {
-        target_id
-      }
-      field_link {
-        id
-      }
-      field_long_text
-      field_long_text_only
-      field_text_field
-      field_integer_list
-      field_demo_dropdown {
-        value
-      }
-      field_file_upload {
-        uri
-        filename
-        uuid
-      }
-      field_options_checkbox {
-        value
-      }
-      field_image_demo {
-        uri
-        filename
-        alt
-        title
-      }
-      Datetime {
-        value(formatString: "")
-        timezone
-        timezone_db
-      }
-      title_1
     }
   }
 }
 `
 
-const ViewClone = ({data}) => {
-const {
-//console.log(data)
-viewdemo:{
-  nodes:{
-    title,
-  },
+const ViewClone = ({ data }) => {
+  const{ 
+    viewdemo_clone: {nodes: viewre_clone},
+  }  = useStaticQuery(getData) 
+  //console.log(viewre);
+  return (
 
-},
-
-} = useStaticQuery(getData)
-
-return (
-  <div>
-     <h2>{/*data.site.siteMetadata.person.name*/}</h2>
-       <h2>{/*data.site.siteMetadata.person.age*/}</h2>
-<h1>title: {title}</h1>
-  </div>
-
-)
-}
+          <section className={styles.page}>
+            
+             {viewre_clone.map(viewresult => {
+                return (
+                 <article key={viewresult.nid}>
+                 <div>Title:{viewresult.title}</div>
+ 
+                
+                 </article>
+  
+                )
+  
+             })}
+          </section>
+   
+  )
+  }
 export default ViewClone
